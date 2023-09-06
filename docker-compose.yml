@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - data:/data/db
+    ports:
+      - 27017:27017
+  listener:
+    image: mlemosf/mqtt-mongo-listener:latest
+    build: .
+    restart: always
+    environment:
+      - ENVIRONMENT_FILE_LOCATION=/run/secrets/listener_env_secret
+    env_file:
+      - .env
+
+volumes:
+  data:
