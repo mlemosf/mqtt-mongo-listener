@@ -28,7 +28,5 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          image: matheuslemos/mqtt-mongo-listener
-          tags: 1.0.0, latest
-          registry: docker.io
-          dockerfile: Dockerfile
+          push: true
+          tags: ${{vars.DOCKER_IMAGE_NAME}}:1.0.0, ${{vars.DOCKER_IMAGE_NAME}}:latest
