@@ -29,6 +29,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           image: matheuslemos/mqtt-mongo-listener
-          tags: 1.0.0, latest, $(date +%s)
+          tags: 1.0.0, latest
           registry: docker.io
           dockerfile: Dockerfile
